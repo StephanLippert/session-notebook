@@ -1,53 +1,63 @@
-# Challenges: GitHub and Markdown
+# Shell Basics
 
-## Github Profile
+## Learning Objectives
 
-Your Github Profile is generally the first impression that other developers and future employers
-will get of you. There is a simple way to enhance this profile with your individual style, namely
-the so called **profile readme markdown file**. So let's build our very own personal profile page!
+- learning what the terminal and the shell are
+- learning to navigate the file system using the shell and the terminal
+- learning to create, rename, remove and move files and folders in the filesystem
 
-### Part 1
+---
 
-First we need a
-[special repository](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)
-containing a file called **README.md**. This markdown file will later be displayed on your profile
-page.
+## Shell and Terminal
 
-1. If not already done: create a GitHub account with a professional username (don't:
-   superH4x0r_1337, do: mary-smith)
-2. Create a new repository **with the same name as your GitHub username**. Choose not to include a
-   README.md file.
-3. Add a new README.md file and include a **level one heading** which welcomes visitors to your
-   page. Commit your results directly to the main branch (we will explore later what that actually
-   means).
+You are probably used to using GUIs
+([Graphical User Interfaces](https://en.wikipedia.org/wiki/Graphical_user_interface)) to interact
+with computers.
 
-Our setup is done. Let's see if it worked. Go to your profile page and check if the readme is
-displayed there.
+Often times developers interact with computers using CLIs (Command Line Interfaces) which are text
+based user interfaces. That means that you type commands to interact with the computer (create /
+move / delete / edit files, install software, change system settings...).
 
-### Part 2
+This has the following reasons / advantages:
 
-Just a simple welcome message does a poor job at describing who you are. Start to fill your profile
-README with information. Tell the world who you are, what your interests are or in which profession
-people can reach out to you for help. Include at least:
+- Many tools don't have a GUI and can only be used as a CLI.
+- You can write scripts (which consist of a number of commands) to automate processes and repetitive
+  tasks and ensure they are being run exactly the same way every time they are executed.
 
-1. an interesting text / description about yourself,
-2. a link to a picture / gif,
-3. a list or table.
+On macOS we are using zsh (z shell) as the command interpreter.
 
-> ❗️ Commit after each step with a good commit message (see handout for how to write good commit
-> messages).
+By default it is run within the Terminal app. For this course we'll use iTerm and Visual Studio Code
+as alternative terminal emulators.
 
-### Part 3
+- A shell (like zsh) is the command interpreter that runs and executes commands on your computer and
+  outputs results.
+- A terminal (like Terminal, iTerm, Visual Studio Code) is a text input and output environment
+  (emulating a [hardware computer terminal](https://en.wikipedia.org/wiki/Computer_terminal)) that
+  sends commands to the shell and displays its output.
 
-Now visitors of your profile get a good overview about you, but plain markdown looks a bit boring.
-Let's give your profile the final touch with some graphical elements!
+### Basic Shell commands
 
-1. Get some inspiration from this
-   [List of awesome GitHub profile readmes](https://github.com/abhisheknaiidu/awesome-github-profile-readme).
+| command                  | functionality                                                              |
+| ------------------------ | -------------------------------------------------------------------------- |
+| `ls`                     | list the content of the current directory                                  |
+| `cd <foldername>`        | change directory into a folder                                             |
+| `cd ..`                  | change into the parent folder                                              |
+| `cd ~`                   | change into your home directory                                            |
+| `pwd`                    | print the current directory path                                           |
+| `touch example.md`       | create a file called "example.md"                                          |
+| `mkdir newFolder`        | create a folder called "newFolder"                                         |
+| `mv <oldname> <newname>` | move or rename a file                                                      |
+| `rm <filename>`          | delete a file permanently (there is no trash bin to recover files!)        |
+| `open .`                 | open the current folder in the finder                                      |
+| `cat <filename>`         | prints the content of a specific file                                      |
+| `curl <url>`             | prints the received content from the specified url. (try `curl ipinfo.io`) |
 
-   > 💡 Hint: you can see the markdown code by opening the readme.md file and clicking the button
-   > with the angle brackets "< >" ("showing the source blob")
+> 💡 There are a lot of commands for any sort of action you want to perform check out
+> [this cheat cheet](https://github.com/RehanSaeed/Bash-Cheat-Sheet) to look up important commands.
 
-2. Now it's your turn to implement some of these elements in your profile. Get crazy!
-   > 💡 Hint: You can find a list of the tools used in these profile readmes
-   > [here](https://github.com/abhisheknaiidu/awesome-github-profile-readme#tools).
+---
+
+## Resources
+
+- [Terminal basics](https://mrkaluzny.com/blog/terminal-101-getting-started-with-terminal/)
+- [Command line cheat sheet](https://github.com/0nn0/terminal-mac-cheatsheet#english-version)
