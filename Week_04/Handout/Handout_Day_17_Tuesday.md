@@ -1,112 +1,231 @@
-# GitHub and Markdown
+# JS Conditions and Booleans
 
 ## Learning Objectives
 
-- learning what version control is and why it is useful / important
-- creating repositories on GitHub
-- creating / editing files on GitHub
-- creating commits on GitHub
-- learning what Markdown is
-- writing Markdown
+- using conditions to control the program flow
+- understanding what booleans and truthy/falsy values are
+- working with comparison and logical operators
+- writing ternary expressions
 
 ---
 
-## Markdown
+## Boolean Values
 
-The Markdown syntax allows writing formatted text (headlines, blockquotes, lists, etc.) that can be
-stored in plain text. It is used by tools and websites like GitHub or Slack. It uses specific
-characters to format parts of the text in a certain way.
+A boolean value, named after George Boole, only has two states. It can either be **true** or
+**false**. Booleans are often used in conditional statements which can execute different code
+depending on their value.
 
-### Markdown Examples
+## Truthy and Falsy Values
 
-| Element                         | Markdown Syntax                   |
-| ------------------------------- | --------------------------------- |
-| Level 1 headline                | `# Level 1 headline`              |
-| Level 2 headline                | `## Level 2 headline`             |
-| Level 5 headline                | `##### Level 5 headline`          |
-| list item                       | `- list item`                     |
-| [ ] done                        | `[ ] checkbox`                    |
-| [x] done                        | `[x] checkbox`                    |
-| **bold text**                   | `**bold text**`                   |
-| _italicized text_               | `_italicized text_`               |
-| [link](https://www.example.com) | `[link text](https://www.example.com)` |
-| image                           | `![description of image](url to image)`           |
-| block quote                     | `> block quote`                   |
-| divider                         | `---`                             |
-| `inline code block`             | `` `inline code block` ``         |
-| `code block`                    | ` ``` code block ``` `            |
+Sometimes you want to have a condition depending on another type of value. JavaScript can transform
+any value into a boolean with _type coercion_. That means that some values act as if they were true
+and others as if they were false: _Truthy_ values become true, _falsy_ values become false.
 
-See this [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for
-more Markdown Syntax.
+- _truthy_ values:
+
+  - non zero numbers: `1`, `2`, `-3`, etc.
+  - non empty strings: `"hello"`
+  - `true`
+
+- _falsy_ values:
+  - `0` / `-0`
+  - `null`
+  - `false`
+  - `undefined`
+  - empty string: `""`
 
 ---
 
-## Git & Commits
+## Comparison Operators
 
-Git is an open source version control system that:
+Comparison operators produce boolean values by comparing two expressions:
 
-- keeps track of all changes made to the source code
-- enables developers to easily collaborate on the same project and exchange updates
-- enables developers to go back to earlier versions of the source code
+| Operator  | Effect                                                                           |
+| --------- | -------------------------------------------------------------------------------- |
+| A `===` B | strict equal: is `true` if both values are equal (including their type).         |
+| A `!==` B | strict not equal: is `true` if both values are not equal (including their type). |
+| A `>` B   | strictly greater than: is `true` if A is greater than B.                         |
+| A `<` B   | strictly less than: is `true` if A is less than B.                               |
+| A `>=` B  | greater than or equal: is `true` if A is greater than or equal B.                |
+| A `<=` B  | less than or equal: is `true` if A is less than or equal B.                      |
 
-### Git Repositories
-
-A Git repository is a place where a project is being saved. It keeps track of all versions of the
-project files. Many people can have access to (and work on) the same repository.
-
-### Commits
-
-A commit is a **snapshot of your repository** at a specific point in time. Creating a commit in your
-project is similar to hitting the **save** button in a video game.
-
-You can always **go back to any prior commit** and will have all the project files as they were when
-you made the commit.
-
-Each commit has a message which should include a descriptive text, so that you and other developers
-will know what changes the commit includes.
-
-### Good commit messages
-
-Writing good commit message is an art form in itself. Try to stick to the following rules:
-
-- Be short and descriptive
-- Always use english
-- The first word should be a verb: "add", "fix", "remove", etc.
-- Use imperative and present tense: "add shop page" instead of "added shop page"
-- Do not end your commit message with a period
-- When in doubt, describe **why** you did something instead of **how**: "fix typo" instead of
-  "replaced the letter a with an e in the second word"
-
-Your commit messages are a protocol of all changes made to the code base. Other developers should be
-able to understand what happened by reading the commit messages.
+> 💡 You might notice that JavaScript uses three equal signs (`===`) to check for equality. This can
+> seem very strange at first.
+>
+> - `=` (`const x = 0`) is the assignment operator and has nothing to do with comparison.
+> - `==` and `!=` are non-strict equality operators. You should **avoid them 99% of the time**.  
+>   Non-strict equality tries to use type coercion to convert both values to the same type:
+>   `"3" == 3` is `true`, which is seldomly what you want.
+> - `===` and `!==` are strict equality operators. **This is what you need almost always**.  
+>   Strict equality checks if type _and_ value are the same: `"3" === 3` is `false`.
 
 ---
 
-## GitHub
+## Logical Operators
 
-GitHub is an online platform where you can store, share and collaborate on **remote** git
-repositories. With GitHub, the same codebase can be shared and edited across many collaborators.
-Many repositories are open source, so you can view the code, create a copy, modify it or use it in
-your own projects.
+Logical operators combine up to two booleans into a new boolean.
 
-> 💡 Hint: Check out this huge
-> [list of GitHub repositories](https://github.com/pawelborkar/awesome-repos) and see what you can
-> find there.
+| Operator                      | Effect                                                 |
+| ----------------------------- | ------------------------------------------------------ |
+| `!`A                          | `not`: flips a `true` value to `false` and vice versa. |
+| A <code>&#124;&#124;</code> B | `or`: is `true` if either A `or` B is true.            |
+| A `&&` B                      | `and`: is `true` if both A `and` B is true.            |
 
-At the same time GitHub is a social network for developers and companies. Your GitHub profile will
-be a valuable public asset for your future career. You can get in contact with many open source
-projects, developers and even companies via GitHub.
+> 💡 You can combine logical operators with brackets to define which operator should be evaluated
+> first, e.g:
+>
+> - `(A || B) && (C || D)`
+> - `!(A || B)`
 
-> 💡 Even though GitHub is the most popular online git platform, it is by far not the only one.
-> There are several alternatives to GitHub, i.e Gitlab or Bitbucket.
+> 💡 Be careful when using `&&` or `||` with non-boolean values. They actually return one of the
+> original values. That can be useful, but can also quickly lead to confusion. This behaviour is
+> called
+> [short-circuit evaluation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation)
+> and is a more advanced topic.
+>
+> - `"some string" || "some other string"` evaluates to `"some string"`
+> - `0 || 100` evaluates to `100`
+> - `null && "yet another string"` evaluates to `null`
 
-<br>
-<br>
+---
+
+## Control Flow: `if / else`
+
+With an if statement we can control whether a part of our code is executed or not, based on a
+condition.
+
+```js
+const isSunShining = true;
+
+if (isSunShining) {
+  // code that is executed only if condition "isSunShining" is true
+}
+```
+
+The else block is executed only if the condition is `false`.
+
+```js
+const isSunShining = false;
+
+if (isSunShining) {
+  // code that is executed only if condition "isSunShining" is true
+} else {
+  // code that is executed only if condition "isSunShining" is false
+}
+```
+
+The condition expression between the `()` brackets can be composed of logical or comparison
+operators as well. You can distinguish between more cases by chaining `else if` statements:
+
+```js
+if (hour < 12) {
+  console.log("Good Morning.");
+} else if (hour < 18) {
+  console.log("Good afternoon.");
+} else if (hour === 24) {
+  console.log("Good night.");
+} else {
+  console.log("Good evening.");
+}
+```
+
+If the condition is not a boolean, it is converted into one by type coercion. This can be used to
+check whether a value is not 0 or an empty string:
+
+```js
+const name = "Alex";
+if (name) {
+  console.log("Hi " + name + "!"); // only executed if name is not an empty string
+}
+```
+
+---
+
+## Ternary Operator: `? :`
+
+With if / else statements whole blocks of code can be controlled. The ternary operator can be used
+if you want to decide between two _expressions_, e.g. which value should be stored in a variable:
+
+```js
+const greetingText = time < 12 ? "Good morning." : "Good afternoon.";
+```
+
+The ternary operator has the following structure:
+
+```js
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+If the condition is true, the first expression is evaluated, otherwise the second expression. The
+ternary operator can be used to decide which function should be called:
+
+```js
+isUserLoggedIn ? logoutUser() : loginUser();
+```
+
+It can also distinguish which value should be passed as an argument to a function:
+
+```js
+moveElement(xPos > 300 ? 300 : xPos); // the element can't be moved further than 300.
+```
+
+> ❗️ The operator can only distinguish between two _expressions_ like values, math / logical
+> operations or function calls, not between _statements_ like variable declarations, if / else
+> statements or multi-line code blocks.
+
+---
+
+## Advanced: The strangeness of boolean coercion and making use of non-strict equality
+
+<details>
+<summary>🫣 This is an advanced topic and not important for the challenges. Click to expand if you're curious.</summary>
+
+Assume you want to check if a variable has a useful value for us to work with. `if(variable)` does
+in fact not check if `variable` is defined but rather if it is truthy. Take a look at these
+examples:
+
+- `if(undefined)` → falsy, won't execute
+- `if(null)` → falsy, won't execute
+- `if("")` → falsy, won't execute, but might still be a useful variable  
+  (e.g. when user clears an input field)
+- `if(0)` → falsy, won't execute, but might still be a useful variable  
+  (e.g. when user wants to set the volume to `0`)
+- `if(" ")` → truthy, will execute
+- `if(-1)` → truthy, will execute
+
+It's useful to define a variable as not having a value when it's `undefined` or `null`. We can check
+for that like this:
+
+```js
+if (variable != null) {
+  console.log('This will be logged even if variable is 0 or ""');
+}
+```
+
+This is one of the rare valid use cases for non-strict comparison (`!=` instead of `!==`).
+
+JavaScript tries to coerce the compared values into the same type. And just like `"3" == 3` is
+`true`, `undefined == null` is also `true`. This also works with `!=` instead of `==`.
+
+> ⚠️ Remember that this is an exception for using non-strict equality. **Strict equality should
+> otherwise always be preferred.**
+
+</details>
 
 ---
 
 ## Resources
 
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-- [GitHub Profile Readme](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)
-- [List of awesome GitHub profile readmes](https://github.com/abhisheknaiidu/awesome-github-profile-readme)
+### Operators
+
+[MDN Comparison Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#comparison_operators)
+
+[MDN Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#logical_operators)
+
+### if / else statements
+
+[MDN about if else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
+
+### Ternary Operator
+
+[MDN Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
